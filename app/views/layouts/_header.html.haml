@@ -11,14 +11,14 @@
           %a.nav-link{ href: '#' } Features
         %li.nav-item
           %a.nav-link{ href: '#' } Pricing
-        - if user_signed_in?
-          %li.nav-item.dropdown
+        %li.nav-item.dropdown
+          - if user_signed_in?
             %a.nav-link.dropdown-toggle{ 'data-bs-toggle': 'dropdown', href: '#', role: 'button' }
               - if current_user.avatar.attached?
                 = image_tag current_user.avatar, class: 'header__users-avatar rounded-circle'
               - else
                 = image_tag 'default_avatar.svg', class: 'header__users-avatar rounded-circle'
-              = current_user.name
+            = current_user.name
             %ul.dropdown-menu
               %li
                 %a.dropdown-item{ href: '#' } Action
@@ -26,3 +26,10 @@
                 %a.dropdown-item{ href: '#' } Another action
               %li
                 %a.dropdown-item{ href: '#' } Something else here
+          - else
+            %a.nav-link.dropdown-toggle{ 'data-bs-toggle': 'dropdown', href: '#', role: 'button' } ログイン
+            %ul.dropdown-menu
+              %li
+                = link_to '新規登録', new_user_registration_path, class: 'dropdown-item'
+              %li
+                = link_to 'ログイン', new_user_session_path, class: 'dropdown-item'
