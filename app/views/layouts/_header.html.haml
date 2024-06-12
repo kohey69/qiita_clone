@@ -11,13 +11,18 @@
           %a.nav-link{ href: '#' } Features
         %li.nav-item
           %a.nav-link{ href: '#' } Pricing
-        %li.nav-item.dropdown
-          %a.nav-link.dropdown-toggle{ 'data-bs-toggle': 'dropdown', href: '#', role: 'button' }
-            Dropdown link
-          %ul.dropdown-menu
-            %li
-              %a.dropdown-item{ href: '#' } Action
-            %li
-              %a.dropdown-item{ href: '#' } Another action
-            %li
-              %a.dropdown-item{ href: '#' } Something else here
+        - if user_signed_in?
+          %li.nav-item.dropdown
+            %a.nav-link.dropdown-toggle{ 'data-bs-toggle': 'dropdown', href: '#', role: 'button' }
+              - if current_user.avatar.attached?
+                = image_tag current_user.avatar, class: 'header__users-avatar rounded-circle'
+              - else
+                = image_tag 'default_avatar.svg', class: 'header__users-avatar rounded-circle'
+              = current_user.name
+            %ul.dropdown-menu
+              %li
+                %a.dropdown-item{ href: '#' } Action
+              %li
+                %a.dropdown-item{ href: '#' } Another action
+              %li
+                %a.dropdown-item{ href: '#' } Something else here
