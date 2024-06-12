@@ -7,6 +7,7 @@
     = f.input :email, required: true, autofocus: true
     = f.input :password, required: true, hint: ("#{@minimum_password_length}文字以上のパスワードを入力してください" if @minimum_password_length)
     = f.input :password_confirmation, required: true
-  .form-actions
+  .form-actions.mb-3
     = f.button :submit, '登録する'
-= link_to '有効化のメールが届いていませんか？', new_user_confirmation_path
+%p= link_to '有効化のメールが届いていませんか？', new_user_confirmation_path
+%p= link_to "パスワードを忘れましたか？", new_user_password_path
