@@ -18,14 +18,15 @@
                 = image_tag current_user.avatar, class: 'header__users-avatar rounded-circle'
               - else
                 = image_tag 'default_avatar.svg', class: 'header__users-avatar rounded-circle'
-            = current_user.name
+              = current_user.name
             %ul.dropdown-menu
               %li
                 %a.dropdown-item{ href: '#' } Action
               %li
                 %a.dropdown-item{ href: '#' } Another action
+              %hr
               %li
-                %a.dropdown-item{ href: '#' } Something else here
+                = link_to 'ログアウト', destroy_user_session_path, class: 'dropdown-item', data: { turbo_method: :delete }
           - else
             %a.nav-link.dropdown-toggle{ 'data-bs-toggle': 'dropdown', href: '#', role: 'button' } ログイン
             %ul.dropdown-menu
