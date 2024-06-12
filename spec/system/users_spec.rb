@@ -12,5 +12,12 @@ RSpec.describe 'ユーザー新規登録・ログイン・パスワードリセ�
     expect do
       click_on '登録する'
     end.to change(User, :count).by(1)
+
+    mail = ActionMailer::Base.deliveries.last
+
+    expect(mail.to).to eq ['user@example.com']
+    expect(mail.from).to eq ['noreply@example.com']
+    expect(mail.subject).to eq 'アカウント有効化について'
+    expect(mail.body).to match 'アカウントを有効化する'
   end
 end
