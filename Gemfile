@@ -16,9 +16,13 @@ gem 'turbo-rails'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri windows]
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 group :development do
+  gem 'capybara'
   gem 'letter_opener_web'
+  gem 'selenium-webdriver'
   gem 'web-console'
 end
