@@ -22,6 +22,7 @@ end
 
 group :development do
   gem 'capybara'
+  gem 'haml-lint'
   gem 'letter_opener_web'
   gem 'selenium-webdriver'
   gem 'web-console'
