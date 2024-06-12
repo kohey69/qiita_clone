@@ -23,7 +23,7 @@
               %li
                 %a.dropdown-item{ href: '#' } Action
               %li
-                %a.dropdown-item{ href: '#' } Another action
+                = link_to 'マイページ', edit_user_registration_path, class: 'dropdown-item'
               %hr
               %li
                 = link_to 'ログアウト', destroy_user_session_path, class: 'dropdown-item', data: { turbo_method: :delete }
