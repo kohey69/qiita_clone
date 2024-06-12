@@ -1,21 +1,20 @@
-source "https://rubygems.org"
-gem "rails", "~> 7.1.3"
+source 'https://rubygems.org'
+gem 'rails', '~> 7.1.3'
 
-
-gem "propshaft"
-gem "pg"
-gem "puma"
-gem "jsbundling-rails"
-gem "turbo-rails"
-gem "stimulus-rails"
-gem "cssbundling-rails"
-gem "bootsnap", require: false
+gem 'bootsnap', require: false
+gem 'cssbundling-rails'
+gem 'jsbundling-rails'
+gem 'pg'
+gem 'propshaft'
+gem 'puma'
+gem 'sgcop', github: 'SonicGarden/sgcop'
+gem 'stimulus-rails'
+gem 'turbo-rails'
 
 group :development, :test do
-  gem "debug", platforms: %i[ mri windows ]
+  gem 'debug', platforms: %i[mri windows]
 end
 
 group :development do
-  gem "web-console"
+  gem 'web-console'
 end
-
