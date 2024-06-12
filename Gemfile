@@ -10,6 +10,7 @@ gem 'pg'
 gem 'propshaft'
 gem 'puma'
 gem 'sgcop', github: 'SonicGarden/sgcop'
+gem 'simple_form'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 
