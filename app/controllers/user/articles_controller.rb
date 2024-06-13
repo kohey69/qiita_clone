@@ -26,6 +26,12 @@ class User::ArticlesController < User::ApplicationController
   end
 
   def update
+    if @article.update(article_params)
+      redirect_to user_article_path(@article), notice: t('controllers.updated')
+    else
+      flash.now[:alert] = t('controllers.failed')
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
