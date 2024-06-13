@@ -35,6 +35,8 @@ class User::ArticlesController < User::ApplicationController
   end
 
   def destroy
+    @article.destroy!
+    redirect_to user_articles_path, notice: t('controllers.destroyed'), status: :see_other
   end
 
   private

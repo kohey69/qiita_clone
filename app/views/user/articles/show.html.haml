@@ -1,1 +1,2 @@
+.float-end= link_to '削除', user_article_path(@article), data: { turbo_method: :delete, turbo_confirm: '削除しますか？よろしいですか？' }, class: 'btn btn-sm btn-danger'
 = render 'articles/article', article: @article
