@@ -10,4 +10,8 @@ class User < ApplicationRecord
   has_many :articles, dependent: :destroy
 
   validates :name, presence: true
+
+  def author?(article)
+    article.user == self
+  end
 end
