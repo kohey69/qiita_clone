@@ -9,7 +9,7 @@
         %header.mb-2.d-flex.justify-content-between
           .articles__author
             - if article.user.avatar.attached?
-              = image_tag current_user.avatar, class: 'header__users-avatar rounded-circle'
+              = image_tag current_user.avatar, class: 'articles__user-avatar rounded-circle'
             = article.user.name
           .articles__info.d-flex
             = l article.created_at, format: :date
