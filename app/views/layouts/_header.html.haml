@@ -1,6 +1,6 @@
 %nav.navbar.navbar-expand-lg.bg-body-tertiary
   .container-fluid
-    %a.navbar-brand{ href: '#' } QiitaClone
+    = link_to 'QiitaClone', root_path, class: 'navbar-brand'
     %button.navbar-toggler{ data: { bs_target: '#navbarNavDropdown', bs_toggle: 'collapse' }, type: 'button' }
       %span.navbar-toggler-icon
     #navbarNavDropdown.collapse.navbar-collapse
@@ -23,7 +23,7 @@
               %li
                 %a.dropdown-item{ href: '#' } Action
               %li
-                %a.dropdown-item{ href: '#' } Another action
+                = link_to 'マイページ', edit_user_registration_path, class: 'dropdown-item'
               %hr
               %li
                 = link_to 'ログアウト', destroy_user_session_path, class: 'dropdown-item', data: { turbo_method: :delete }
