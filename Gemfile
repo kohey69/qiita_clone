@@ -19,7 +19,6 @@ gem 'turbo-rails'
 group :development, :test do
   gem 'debug', platforms: %i[mri windows]
   gem 'factory_bot_rails'
-  gem 'faker'
   gem 'rspec-rails'
 end
 
