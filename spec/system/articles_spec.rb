@@ -20,4 +20,27 @@ RSpec.describe '記事', type: :system do
       expect(page).to have_content('表示される記事')
     end
   end
+
+  describe '記事詳細ページ' do
+    let(:user) { create(:user) }
+
+    it '自分が作成した記事の場合、編集リンクが表示されること' do
+      article = create(:article, user:, title: '編集できる記事')
+      login_as user, scope: :user
+      visit article_path(article)
+
+      expect(page).to have_content '編集できる記事'
+      expect(page).to have_link('編集する', href: edit_user_article_path(article))
+    end
+
+    it '自分が作成していない記事の場合、編集リンクが表示されないこと' do
+      article = create(:article, user:, title: '編集できない記事')
+      other_user = create(:user, email: 'kuma@example.com')
+      login_as other_user, scope: :user
+      visit article_path(article)
+
+      expect(page).to have_content '編集できない記事'
+      expect(page).not_to have_link('編集する', href: edit_user_article_path(article))
+    end
+  end
 end
