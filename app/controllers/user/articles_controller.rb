@@ -1,5 +1,6 @@
 class User::ArticlesController < User::ApplicationController
   def index
+    @articles = current_user.articles.default_order.page(params[:page])
   end
 
   def show

@@ -1,0 +1,19 @@
+%h1.mb-4 #{current_user.name}の記事一覧
+
+= paginate @articles
+
+- @articles.eager_load(:user).each do |article|
+  = link_to user_article_path(article), class: 'text-decoration-none' do
+    .card.mb-3.p-2{ class: class_names('bg-secondary': !article.published?) }
+      .card-body
+        %header.mb-2.d-flex.justify-content-between
+          .articles__author
+            - if article.user.avatar.attached?
+              = image_tag current_user.avatar, class: 'header__users-avatar rounded-circle'
+            = article.user.name
+          .articles__published
+            = article.published ? '公開' : '非公開'
+        %h2.fs-4= article.title
+        .text-muted= truncate article.content, length: 140
+
+= paginate @articles

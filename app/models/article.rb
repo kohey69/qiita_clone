@@ -3,4 +3,6 @@ class Article < ApplicationRecord
 
   validates :title, presence: true
   validates :content, presence: true
+
+  scope :default_order, -> { order(created_at: :desc) }
 end
