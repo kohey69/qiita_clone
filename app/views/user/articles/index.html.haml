@@ -11,7 +11,8 @@
             - if article.user.avatar.attached?
               = image_tag current_user.avatar, class: 'header__users-avatar rounded-circle'
             = article.user.name
-          .articles__published
+          .articles__info.d-flex
+            = l article.created_at, format: :date
             = article.published ? '公開' : '非公開'
         %h2.fs-4= article.title
         .text-muted= truncate article.content, length: 140
