@@ -1,0 +1,23 @@
+%nav.navbar.navbar-expand-lg.bg-body-tertiary
+  .container-fluid
+    %a.navbar-brand{ href: '#' } QiitaClone
+    %button.navbar-toggler{ data: { bs_target: '#navbarNavDropdown', bs_toggle: 'collapse' }, type: 'button' }
+      %span.navbar-toggler-icon
+    #navbarNavDropdown.collapse.navbar-collapse
+      %ul.navbar-nav
+        %li.nav-item
+          %a.nav-link.active{ href: '#' } Home
+        %li.nav-item
+          %a.nav-link{ href: '#' } Features
+        %li.nav-item
+          %a.nav-link{ href: '#' } Pricing
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle{ 'data-bs-toggle': 'dropdown', href: '#', role: 'button' }
+            Dropdown link
+          %ul.dropdown-menu
+            %li
+              %a.dropdown-item{ href: '#' } Action
+            %li
+              %a.dropdown-item{ href: '#' } Another action
+            %li
+              %a.dropdown-item{ href: '#' } Something else here
