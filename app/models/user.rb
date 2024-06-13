@@ -7,5 +7,7 @@ class User < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [100, 100]
   end
 
+  has_many :articles, dependent: :destroy
+
   validates :name, presence: true
 end
