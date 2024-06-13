@@ -14,6 +14,7 @@ ja:
         title: タイトル
         content: 本文
         published: 公開する
+        tag_list: タグ
 
   views:
     back: 戻る

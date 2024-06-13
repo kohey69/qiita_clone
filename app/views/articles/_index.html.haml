@@ -12,6 +12,9 @@
           .articles__info.d-flex
             = l article.created_at, format: :date
         %h2.fs-4= article.title
+        .article__tags.mb-2
+          - article.tags.each do |tag|
+            .badge.text-bg-success= "\##{tag.name}"
         .text-muted= truncate article.content, length: 140
 
 = paginate articles
