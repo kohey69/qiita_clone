@@ -1,4 +1,6 @@
 class User::ArticlesController < User::ApplicationController
+  before_action :set_article, only: %i[show edit update destroy]
+
   def index
     @articles = current_user.articles.default_order.page(params[:page])
   end
@@ -23,6 +25,9 @@ class User::ArticlesController < User::ApplicationController
   def edit
   end
 
+  def update
+  end
+
   def destroy
   end
 
@@ -30,5 +35,9 @@ class User::ArticlesController < User::ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :content, :published)
+  end
+
+  def set_article
+    @article = current_user.articles.find(params[:id])
   end
 end

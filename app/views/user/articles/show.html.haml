@@ -1,0 +1,17 @@
+.row.p-3
+  .col-lg-2
+  .col-lg-10.card
+    .card-body
+      %header.mb-2.d-flex.justify-content-between
+        .articles__author
+          - if @article.user.avatar.attached?
+            = image_tag current_user.avatar, class: 'header__users-avatar rounded-circle'
+          = @article.user.name
+        .articles__info.d-flex
+          = l @article.created_at, format: :date
+          = @article.published ? '公開' : '非公開'
+      .d-flex.justify-content-between
+        %h1.fs-2= @article.title
+        %span= link_to '編集する', edit_user_article_path(@article), class: 'btn btn-sm btn-outline-secondary'
+      .text-muted.mb-3= "最終更新日：#{ l @article.updated_at, format: :date }"
+      %article= @article.content
