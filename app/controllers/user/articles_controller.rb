@@ -13,7 +13,7 @@ class User::ArticlesController < User::ApplicationController
   end
 
   def create
-    @article = current_user.articles.build_with_tags(article_params)
+    @article = current_user.articles.build(article_params)
     if @article.save
       redirect_to user_article_path(@article), notice: t('controllers.created')
     else
@@ -26,7 +26,7 @@ class User::ArticlesController < User::ApplicationController
   end
 
   def update
-    if @article.update_with_tags!(article_params)
+    if @article.update(article_params)
       redirect_to user_article_path(@article), notice: t('controllers.updated')
     else
       flash.now[:alert] = t('controllers.failed')
