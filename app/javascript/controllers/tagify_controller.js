@@ -9,9 +9,5 @@ export default class extends Controller {
       maxTags: 5,
       originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(',')
     })
-    const tagNamesStr = this.tagNamesTarget.value
-    if (tagNamesStr.length > 0) {
-      this.tagify.addTags(tagNamesStr.split(','))
-    }
   }
 }
