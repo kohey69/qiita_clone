@@ -10,7 +10,7 @@ class Article < ApplicationRecord
   validates :content, presence: true
   validate :tags_must_be_less_than_or_equal_max_size
 
-  scope :default_order, -> { order(created_at: :desc) }
+  scope :default_order, -> { order(created_at: :desc, id: :desc) }
   scope :published, -> { where(published: true) }
 
   def tag_list
