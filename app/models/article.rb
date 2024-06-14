@@ -5,4 +5,5 @@ class Article < ApplicationRecord
   validates :content, presence: true
 
   scope :default_order, -> { order(created_at: :desc, id: :desc) }
+  scope :published, -> { where(published: true) }
 end

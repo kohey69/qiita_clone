@@ -21,7 +21,7 @@
               = current_user.name
             %ul.dropdown-menu
               %li
-                %a.dropdown-item{ href: '#' } Action
+                = link_to '自分の記事一覧', user_articles_path, class: 'dropdown-item'
               %li
                 = link_to 'マイページ', edit_user_registration_path, class: 'dropdown-item'
               %hr

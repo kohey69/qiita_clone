@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   namespace :user do
     resources :articles
   end
-  root 'home#index' # TODO: 仮のrootなので記事一覧が作成できたらそっちに変更する
+  resources :articles, only: %i[show]
+  root 'articles#index'
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
