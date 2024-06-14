@@ -14,10 +14,7 @@
         %li.nav-item.dropdown
           - if user_signed_in?
             %a.nav-link.dropdown-toggle{ 'data-bs-toggle': 'dropdown', href: '#', role: 'button' }
-              - if current_user.avatar.attached?
-                = image_tag current_user.avatar, class: 'header__users-avatar rounded-circle'
-              - else
-                = image_tag 'default_avatar.svg', class: 'header__users-avatar rounded-circle'
+              = image_tag avatar_path(current_user.avatar), class: 'header__users-avatar rounded-circle'
               = current_user.name
             %ul.dropdown-menu
               %li
