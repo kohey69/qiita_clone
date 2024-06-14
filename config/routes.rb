@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :articles, only: %i[show]
   resources :users, only: %i[show]
+  resources :tags, only: %i[index]
   root 'articles#index'
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?

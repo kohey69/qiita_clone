@@ -12,6 +12,11 @@ class Article < ApplicationRecord
 
   scope :default_order, -> { order(created_at: :desc, id: :desc) }
   scope :published, -> { where(published: true) }
+  scope :tagged, ->(tag_names) do
+    return all if tag_names.blank?
+
+    joins(:tags).where(tags: { name: tag_names })
+  end
 
   def tag_list
     @tag_list = tags.map(&:name).join(', ')

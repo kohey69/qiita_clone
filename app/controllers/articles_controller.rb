@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.published.default_order.page(params[:page])
+    @articles = Article.published.tagged(params[:tag_names]).default_order.page(params[:page])
   end
 
   def show

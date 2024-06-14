@@ -1,0 +1,7 @@
+%h1 Tags#index
+%p Find me in app/views/tags/index.html.haml
+.row
+  - @tags.each do |tag|
+    .col-md-2.p-2
+      = link_to root_path(tag_names: [tag.name]), class: 'text-decoration-none text-black' do
+        .badge.text-bg-success= "\##{tag.name}"
