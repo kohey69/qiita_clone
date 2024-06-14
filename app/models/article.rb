@@ -4,5 +4,5 @@ class Article < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
-  scope :default_order, -> { order(created_at: :desc) }
+  scope :default_order, -> { order(created_at: :desc, id: :desc) }
 end
