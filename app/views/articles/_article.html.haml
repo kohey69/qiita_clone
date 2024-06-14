@@ -12,7 +12,7 @@
             %span.badge.bg-secondary 非公開
       .d-flex.justify-content-between
         %h1.fs-2= article.title
-        - if current_user.author?(article)
+        - if article.user == current_user
           %span= link_to '編集する', edit_user_article_path(article), class: 'btn btn-sm btn-outline-secondary'
       .article__tags.mb-2
         - article.tags.each do |tag|
