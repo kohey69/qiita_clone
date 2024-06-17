@@ -14,7 +14,7 @@ class Article < ApplicationRecord
   scope :published, -> { where(published: true) }
 
   def tag_list
-    @tag_list = tags.map(&:name).join(', ')
+    tags.map(&:name).join(', ')
   end
 
   def tag_list=(value)
