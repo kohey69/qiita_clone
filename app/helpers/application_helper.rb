@@ -48,7 +48,7 @@ module ApplicationHelper
   end
 
   def favorite_icon_path(article)
-    if current_user.favorites.find_by(article_id: article.id)
+    if current_user.favorite?(article)
       'favorite.svg'
     else
       'not_favorite.svg'
