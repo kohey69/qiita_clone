@@ -8,6 +8,7 @@ class User < ApplicationRecord
   end
 
   has_many :articles, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   validates :name, presence: true
 end
