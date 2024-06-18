@@ -8,9 +8,7 @@
         %li.nav-item
           = link_to 'タグ一覧', tags_path, class: 'nav-link'
         %li.nav-item
-          %a.nav-link{ href: '#' } Features
-        %li.nav-item
-          %a.nav-link{ href: '#' } Pricing
+          = link_to '記事投稿', new_user_article_path, class: 'nav-link'
         %li.nav-item.dropdown
           - if user_signed_in?
             %a.nav-link.dropdown-toggle{ 'data-bs-toggle': 'dropdown', href: '#', role: 'button' }
@@ -20,7 +18,9 @@
               %li
                 = link_to '自分の記事一覧', user_articles_path, class: 'dropdown-item'
               %li
-                = link_to 'マイページ', edit_user_registration_path, class: 'dropdown-item'
+                = link_to 'マイページ', user_path(current_user), class: 'dropdown-item'
+              %li
+                = link_to '基本情報編集', edit_user_registration_path, class: 'dropdown-item'
               %hr
               %li
                 = link_to 'ログアウト', destroy_user_session_path, class: 'dropdown-item', data: { turbo_method: :delete }
