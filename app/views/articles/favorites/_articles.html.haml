@@ -1,4 +1,4 @@
-= paginate articles
+= paginate articles, param_name: :favorites_page
 
 - if articles.present?
   - articles.preload(:tags, user: { avatar_attachment: :blob }).each do |article|
@@ -18,6 +18,6 @@
               .badge.text-bg-success= "\##{tag.name}"
           .text-muted= markdown sanitize(truncate(article.content, escape: false, length: 140))
 - else
-  記事はありません
+  いいねした記事はありません
 
-= paginate articles
+= paginate articles, param_name: :favorites_page

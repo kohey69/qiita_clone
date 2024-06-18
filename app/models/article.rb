@@ -18,6 +18,7 @@ class Article < ApplicationRecord
 
     joins(:tags).where(tags: { name: tag_names })
   end
+  scope :with_favorites, ->(user) { joins(:favorites).where(favorites: { user: }) }
 
   def tag_list
     @tag_list = tags.map(&:name).join(', ')
