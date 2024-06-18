@@ -1,0 +1,14 @@
+.card.p-3
+  .card-body
+    = link_to user_path(user), class: 'text-decoration-none text-black' do
+      .d-flex.justify-content-center.align-items-center.flex-column
+        = image_tag avatar_path(user.avatar), class: 'user__avatar rounded-circle'
+        .fw-bolder= user.name
+        .fw-semibold
+          = user.articles.size
+          %span.text-muted 記事
+  %hr
+  .d-flex.justify-content-center.gap-4.mb-3
+    .fw-semibold.text-muted # フォロー
+    .fw-semibold.text-muted # フォロワー
+  = link_to 'フォローする', '#', class: 'btn btn-outline-secondary'

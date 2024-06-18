@@ -1,6 +1,7 @@
 .row.p-3
-  .col-lg-2
-  .col-lg-10.card
+  .col-lg-3
+    = render 'users/user', user: article.user
+  .col-lg-9.card
     .card-body
       %header.mb-2.d-flex.justify-content-between
         .articles__author

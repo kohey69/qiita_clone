@@ -14,7 +14,7 @@ RSpec.describe '記事', type: :system do
     it '非公開記事が表示されないこと' do
       other_user = create(:user, email: 'kuma@example.com')
       create(:article, user:, title: '自分の公開記事')
-      create(:article, :unpublished, title: '自分の非公開記事')
+      create(:article, :unpublished, user:, title: '自分の非公開記事')
       create(:article, user: other_user, title: '他のユーザーの公開記事')
       create(:article, :unpublished, user: other_user, title: '他のユーザーの非公開記事')
       login_as user, scope: :user
