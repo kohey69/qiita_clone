@@ -15,6 +15,6 @@
         .article__tags.mb-2
           - article.tags.each do |tag|
             .badge.text-bg-success= "\##{tag.name}"
-        .text-muted= truncate article.content, length: 140
+        .text-muted= markdown sanitize(truncate(article.content, escape: false, length: 140))
 
 = paginate articles
