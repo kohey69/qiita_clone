@@ -26,4 +26,13 @@ RSpec.describe '記事へのいいね', type: :system do
     end.to change(Favorite, :count).by(-1)
     expect(page).to have_no_selector('img[alt="いいね解除"]')
   end
+
+  it 'ログインしていない時、いいねボタンをクリックするとログイン画面に遷移すること', :js do
+    visit article_path(article)
+
+    expect do
+      find('.articles__favorite').click
+    end.not_to change(Favorite, :count)
+    expect(page).to have_current_path(new_user_session_path)
+  end
 end
