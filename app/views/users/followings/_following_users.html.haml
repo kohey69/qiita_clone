@@ -6,8 +6,7 @@
       .card.mb-3.p-2
         .card-body
           %header
-            - if user.avatar.attached?
-              = image_tag user.avatar, class: 'following_users__user-avatar rounded-circle'
+            = image_tag avatar_path(user.avatar), class: 'following_users__user-avatar rounded-circle'
             = user.name
 - else
   .card.mb-3.p-2
