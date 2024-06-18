@@ -8,6 +8,11 @@ class User < ApplicationRecord
   end
 
   has_many :articles, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   validates :name, presence: true
+
+  def favorite?(article)
+    self.favorites.find_by(article_id: article.id).present?
+  end
 end

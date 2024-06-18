@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   namespace :user do
     resources :articles
   end
-  resources :articles, only: %i[show]
+  resources :articles, only: %i[show] do
+    resource :favorite, only: %i[create destroy], module: :articles
+  end
   resources :users, only: %i[show]
   resources :tags, only: %i[index]
   root 'articles#index'
