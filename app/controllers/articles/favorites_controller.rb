@@ -3,7 +3,7 @@ class Articles::FavoritesController < ApplicationController
   before_action :set_article
 
   def create
-    @favorite = current_user.favorites.find_or_create_by!(article: @article)
+    @favorite = current_user.favorites.find_or_create_by!(article: @article) # いいね済みの場合は例外を吐かないように
   end
 
   def destroy
@@ -12,10 +12,6 @@ class Articles::FavoritesController < ApplicationController
   end
 
   private
-
-  def favorite_params
-    params.require(:favorite).permit(:article_id)
-  end
 
   def set_article
     @article = Article.published.find(params[:article_id])
