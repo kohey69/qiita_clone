@@ -1,7 +1,11 @@
-= turbo_frame_tag 'articles-favorite' do
-  - if current_user.favorite?(article)
-    = link_to article_favorite_path(article), class: 'btn btn-danger', data: { turbo_method: :delete } do
-      = image_tag 'favorite.svg', alt: 'いいね解除', class: 'articles__favorite'
-  - else
-    = link_to article_favorite_path(article), class: 'btn btn-danger', data: { turbo_method: :post } do
-      = image_tag 'not_favorite.svg', alt: 'いいね登録', class: 'articles__favorite'
+- if user_signed_in?
+  = turbo_frame_tag 'articles-favorite' do
+    - if current_user.favorite?(article)
+      = link_to article_favorite_path(article), class: 'btn btn-danger', data: { turbo_method: :delete } do
+        = image_tag 'favorite.svg', alt: 'いいね解除', class: 'articles__favorite'
+    - else
+      = link_to article_favorite_path(article), class: 'btn btn-danger', data: { turbo_method: :post } do
+        = image_tag 'not_favorite.svg', alt: 'いいね登録', class: 'articles__favorite'
+- else
+  = link_to article_favorite_path(article), class: 'btn btn-danger', data: { turbo_method: :post } do
+    = image_tag 'not_favorite.svg', alt: 'いいね登録', class: 'articles__favorite'
