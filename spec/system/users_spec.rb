@@ -74,5 +74,33 @@ RSpec.describe 'ユーザー', type: :system do
       expect(page).to have_content('他のユーザーの公開記事')
       expect(page).to have_no_content('他のユーザーの非公開記事')
     end
+
+    describe 'いいねした記事' do
+      let(:other_user) { create(:user, email: 'kuma@example.com') }
+
+      before do
+        article = create(:article, user:, title: 'いいねされている記事')
+        create(:article, user: other_user, title: 'いいねされていない公開記事')
+        create(:favorite, user:, article:)
+        login_as user, scope: :user
+      end
+
+      it 'そのユーザーがいいねした記事が表示できること' do
+        visit user_path(user)
+        click_on 'いいねした記事'
+
+        expect(page).to have_content 'いいねされている記事'
+        expect(page).to have_no_content 'いいねされていない記事'
+      end
+
+      it 'いいねした記事がない場合は表示されないこと' do
+        visit user_path(other_user)
+        click_on 'いいねした記事'
+
+        expect(page).to have_content 'いいねした記事はありません'
+        expect(page).to have_no_content 'いいねされている記事'
+        expect(page).to have_no_content 'いいねされていない記事'
+      end
+    end
   end
 end
