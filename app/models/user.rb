@@ -20,4 +20,8 @@ class User < ApplicationRecord
   def favorite?(article)
     self.favorites.find_by(article_id: article.id).present?
   end
+
+  def follow?(user)
+    self.active_followings.exists?(followed_user_id: user.id)
+  end
 end
