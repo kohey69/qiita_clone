@@ -9,3 +9,6 @@
           %span.text-muted 記事
   %hr
   = render 'users/followings/follow_info', user: user
+  %hr
+  .d-flex.justify-content-center
+    = link_to 'フォローリスト', user_followings_path(user), class: 'text-secondary'
