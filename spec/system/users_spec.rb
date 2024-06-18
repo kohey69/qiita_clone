@@ -102,5 +102,34 @@ RSpec.describe 'ユーザー', type: :system do
         expect(page).to have_no_content 'いいねされていない記事'
       end
     end
+
+    describe 'フォロー・フォロワー', :js do
+      let(:other_user) { create(:user, email: 'kuma@example.com') }
+
+      before do
+        login_as user, scope: :user
+      end
+
+      it 'フォローできること' do
+        visit user_path(other_user)
+
+        expect(page).to have_content 'フォローする'
+        expect do
+          click_on 'フォローする'
+          expect(page).to have_content 'フォロー解除'
+        end.to change(Following, :count).by(1)
+      end
+
+      it 'フォロー解除できること' do
+        create(:following, following_user: user, followed_user: other_user)
+        visit user_path(other_user)
+
+        expect(page).to have_content 'フォロー解除'
+        expect do
+          click_on 'フォロー解除'
+          expect(page).to have_content 'フォローする'
+        end.to change(Following, :count).by(-1)
+      end
+    end
   end
 end
