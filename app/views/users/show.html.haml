@@ -5,10 +5,10 @@
   .col-lg-9
     %nav.mb-3
       .nav.nav-tabs{:role => "tablist"}
-        %button.nav-link.active{data: {"bs-target": ".nav-my-articles", "bs-toggle": "tab"}, :role => "tab", :type => "button"} 作成した記事
-        %button.nav-link{data: {"bs-target": ".nav-favorites", "bs-toggle": "tab"}, :role => "tab", :type => "button"} いいねした記事
+        %button.nav-link{class: class_names(active: params[:favorites_page].blank?), data: {"bs-target": ".nav-my-articles", "bs-toggle": "tab"}, :role => "tab", :type => "button"} 作成した記事
+        %button.nav-link{class: class_names(active: params[:favorites_page].present?), data: {"bs-target": ".nav-favorites", "bs-toggle": "tab"}, :role => "tab", :type => "button"} いいねした記事
     .tab-content
-      .nav-my-articles.tab-pane.fade.show.active{role: "tabpanel", tabindex: "0"}
+      .nav-my-articles.tab-pane.fade{class: class_names('show active': params[:favorites_page].blank?), role: "tabpanel", tabindex: "0"}
         = render 'articles/index', articles: @articles
-      .nav-favorites.tab-pane.fade{role: "tabpanel", tabindex: "0"}
+      .nav-favorites.tab-pane.fade{class: class_names('show active': params[:favorites_page].present?), role: "tabpanel", tabindex: "0"}
         = render 'articles/favorites/articles', articles: @favorite_articles
