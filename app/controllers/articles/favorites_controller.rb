@@ -1,6 +1,6 @@
 class Articles::FavoritesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_article, only: %i[create destroy]
+  before_action :set_article
 
   def create
     @favorite = current_user.favorites.find_or_create_by!(article: @article)
