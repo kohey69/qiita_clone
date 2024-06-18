@@ -11,4 +11,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   validates :name, presence: true
+
+  def favorite?(article)
+    self.favorites.find_by(article_id: article.id).present?
+  end
 end

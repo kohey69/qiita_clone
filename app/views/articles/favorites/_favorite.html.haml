@@ -1,5 +1,5 @@
 = turbo_frame_tag 'articles-favorite' do
-  - if current_user.favorites.find_by(article_id: article.id)
+  - if current_user.favorite?(article)
     = link_to article_favorite_path(article, favorite: { article_id: article.id }), class: 'btn btn-danger', data: { turbo_method: :delete } do
       = image_tag 'favorite.svg', alt: 'いいね解除', class: 'articles__favorite'
   - else
