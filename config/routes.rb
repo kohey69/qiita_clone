@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: %i[show] do
     resource :following, only: %i[create destroy], module: :users
+    resources :followings, only: %i[index], module: :users
   end
   resources :tags, only: %i[index]
   root 'articles#index'

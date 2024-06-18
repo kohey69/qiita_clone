@@ -1,0 +1,16 @@
+= paginate following_users, param_name: :following_page
+
+- if following_users.present?
+  - following_users.each do |user|
+    = link_to user_path(user), class: 'text-decoration-none' do
+      .card.mb-3.p-2
+        .card-body
+          %header
+            - if user.avatar.attached?
+              = image_tag user.avatar, class: 'following_users__user-avatar rounded-circle'
+            = user.name
+- else
+  .card.mb-3.p-2
+    .card-body フォローしている人がいません
+
+= paginate following_users, param_name: :following_page
