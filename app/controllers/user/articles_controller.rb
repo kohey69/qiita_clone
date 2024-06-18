@@ -18,7 +18,7 @@ class User::ArticlesController < User::ApplicationController
       redirect_to user_article_path(@article), notice: t('controllers.created')
     else
       flash.now[:alert] = t('controllers.failed')
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -30,7 +30,7 @@ class User::ArticlesController < User::ApplicationController
       redirect_to user_article_path(@article), notice: t('controllers.updated')
     else
       flash.now[:alert] = t('controllers.failed')
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
@@ -42,7 +42,7 @@ class User::ArticlesController < User::ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content, :published)
+    params.require(:article).permit(:title, :content, :published, :tag_list)
   end
 
   def set_article
