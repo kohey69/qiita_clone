@@ -46,12 +46,4 @@ module ApplicationHelper
     markdown = Redcarpet::Markdown.new(renderer, markdown_options)
     sanitize(markdown.render(text))
   end
-
-  def favorite_icon_path(article)
-    if current_user.favorite?(article)
-      'favorite.svg'
-    else
-      'not_favorite.svg'
-    end
-  end
 end
