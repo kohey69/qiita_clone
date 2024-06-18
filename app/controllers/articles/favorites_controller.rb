@@ -1,14 +1,13 @@
 class Articles::FavoritesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_article, only: %i[destroy]
+  before_action :set_article, only: %i[create destroy]
 
   def create
-    @favorite = current_user.favorites.build(favorite_params)
-    @favorite.save
+    @favorite = current_user.favorites.find_or_create_by!(article: @article)
   end
 
   def destroy
-    @favorite = current_user.favorites.find_by(article_id: favorite_params[:article_id])
+    @favorite = current_user.favorites.find_by(article: @article)
     @favorite&.destroy # windowを複数開いていいねを解除した時に例外を吐かないように
   end
 
@@ -19,6 +18,6 @@ class Articles::FavoritesController < ApplicationController
   end
 
   def set_article
-    @article = Article.find(params[:article_id])
+    @article = Article.published.find(params[:article_id])
   end
 end
