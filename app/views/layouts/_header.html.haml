@@ -6,7 +6,7 @@
     #navbarNavDropdown.collapse.navbar-collapse
       %ul.navbar-nav
         %li.nav-item
-          %a.nav-link.active{ href: '#' } Home
+          = link_to 'タグ一覧', tags_path, class: 'nav-link'
         %li.nav-item
           %a.nav-link{ href: '#' } Features
         %li.nav-item
