@@ -1,6 +1,6 @@
 = simple_form_for [:user, article] do |f|
   = f.input :title
-  = f.input :tag_list, as: :string, hint: 'カンマ(,)区切りで入力した文字列がタグとして登録されます'
+  = f.input :tag_list, as: :string, hint: 'カンマ(,)区切りで入力した文字列がタグとして登録されます', input_html: { data: { controller: 'tagify', tagify_target: 'tagify'} }
   = f.input :content
   = f.input :published, hint: 'QiitaClone全てのユーザーに公開されます'
   = f.button :submit
