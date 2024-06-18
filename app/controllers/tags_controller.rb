@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
   def index
-    @tags = Tag.with_published_articles.default_order
+    @tags = Tag.has_published_articles.default_order
   end
 end
