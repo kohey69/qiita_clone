@@ -32,7 +32,7 @@ module ApplicationHelper
     html_options = {
       filter_html: false,
       no_images: false,
-      no_links: false,
+      no_links: true,
       no_styles: true,
       escape_html: false,
       safe_links_only: true,
