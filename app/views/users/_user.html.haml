@@ -8,7 +8,4 @@
           = user.articles.size
           %span.text-muted 記事
   %hr
-  .d-flex.justify-content-center.gap-4.mb-3
-    .fw-semibold.text-muted # フォロー
-    .fw-semibold.text-muted # フォロワー
-  = link_to 'フォローする', '#', class: 'btn btn-outline-secondary'
+  = render 'users/followings/follow_info', user: user

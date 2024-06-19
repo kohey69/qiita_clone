@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_17_055355) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_18_054319) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,6 +61,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_17_055355) do
     t.index ["user_id", "article_id"], name: "index_favorites_on_user_id_and_article_id", unique: true
   end
 
+  create_table "followings", force: :cascade do |t|
+    t.bigint "following_user_id", null: false
+    t.bigint "followed_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_user_id"], name: "index_followings_on_followed_user_id"
+    t.index ["following_user_id", "followed_user_id"], name: "index_followings_on_following_user_id_and_followed_user_id", unique: true
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.bigint "article_id", null: false
     t.bigint "tag_id", null: false
@@ -98,6 +107,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_17_055355) do
   add_foreign_key "articles", "users"
   add_foreign_key "favorites", "articles"
   add_foreign_key "favorites", "users"
+  add_foreign_key "followings", "users", column: "followed_user_id"
+  add_foreign_key "followings", "users", column: "following_user_id"
   add_foreign_key "taggings", "articles"
   add_foreign_key "taggings", "tags"
 end

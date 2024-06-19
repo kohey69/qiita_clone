@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :articles, only: %i[show] do
     resource :favorite, only: %i[create destroy], module: :articles
   end
-  resources :users, only: %i[show]
+  resources :users, only: %i[show] do
+    resource :following, only: %i[create destroy], module: :users
+  end
   resources :tags, only: %i[index]
   root 'articles#index'
 
