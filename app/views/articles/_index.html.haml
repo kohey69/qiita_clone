@@ -2,9 +2,9 @@
 
 - if articles.present?
   - articles.preload(:tags, user: { avatar_attachment: :blob }).each do |article|
-    = link_to generate_article_path(article), class: 'text-decoration-none' do
-      .card.mb-3.p-2{ class: class_names('bg-dark-subtle': !article.published?) }
-        .card-body
+    .card.mb-3.p-2{ class: class_names('bg-dark-subtle': !article.published?) }
+      .card-body
+        = link_to user_path(article.user), class: 'text-decoration-none text-black' do
           %header.mb-2.d-flex.justify-content-between
             .articles__author
               - if article.user.avatar.attached?
@@ -12,6 +12,7 @@
               = article.user.name
             .articles__info.d-flex
               = l article.created_at, format: :date
+        = link_to generate_article_path(article), class: 'text-decoration-none text-black' do
           %h2.fs-4= article.title
           .article__tags.mb-2
             - article.tags.each do |tag|
