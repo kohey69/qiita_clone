@@ -1,0 +1,23 @@
+= paginate articles
+
+- if articles.present?
+  - articles.preload(:tags, user: { avatar_attachment: :blob }).each do |article|
+    = link_to generate_article_path(article), class: 'text-decoration-none' do
+      .card.mb-3.p-2{ class: class_names('bg-dark-subtle': !article.published?) }
+        .card-body
+          %header.mb-2.d-flex.justify-content-between
+            .articles__author
+              - if article.user.avatar.attached?
+                = image_tag article.user.avatar, class: 'articles__user-avatar rounded-circle'
+              = article.user.name
+            .articles__info.d-flex
+              = l article.created_at, format: :date
+          %h2.fs-4= article.title
+          .article__tags.mb-2
+            - article.tags.each do |tag|
+              .badge.text-bg-success= "\##{tag.name}"
+          .text-muted= markdown sanitize(truncate(article.content, escape: false, length: 140))
+- else
+  記事はありません
+
+= paginate articles

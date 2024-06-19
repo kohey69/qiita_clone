@@ -1,0 +1,7 @@
+%h1 タグ一覧
+%p 公開中の記事のタグ一覧
+.row
+  - @tags.each do |tag|
+    .col-md-2.p-2
+      = link_to root_path(tag_names: [tag.name]), class: 'text-decoration-none text-black' do
+        .badge.text-bg-success= "\##{tag.name}"

@@ -1,0 +1,24 @@
+.row.p-3
+  .col-lg-3
+    = render 'users/user', user: article.user
+    .d-flex.justify-content-center.align-items-center
+      = render 'articles/favorites/favorite', article: article
+  .col-lg-9.card
+    .card-body
+      %header.mb-2.d-flex.justify-content-between
+        .articles__author
+          = image_tag avatar_path(article.user.avatar), class: 'articles__user-avatar rounded-circle'
+          = article.user.name
+        .articles__info
+          = l article.created_at, format: :date
+          - unless article.published?
+            %span.badge.bg-secondary 非公開
+      .d-flex.justify-content-between
+        %h1.fs-2= article.title
+        - if article.user == current_user
+          %span= link_to '編集する', edit_user_article_path(article), class: 'btn btn-sm btn-outline-secondary'
+      .article__tags.mb-2
+        - article.tags.each do |tag|
+          .badge.text-bg-success= "\##{tag.name}"
+      .text-muted.mb-3= "最終更新日：#{ l article.updated_at, format: :date }"
+      %article= markdown article.content

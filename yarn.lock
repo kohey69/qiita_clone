@@ -171,6 +171,11 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/merge-streams/-/merge-streams-2.3.0.tgz#719df7fb41766bc143369eaa0dd56d8dc87c9958"
   integrity sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==
 
+"@yaireo/tagify@^4.26.6":
+  version "4.26.6"
+  resolved "https://registry.yarnpkg.com/@yaireo/tagify/-/tagify-4.26.6.tgz#ee7e7b6e7c4641770d5d892a0d87599159ad4082"
+  integrity sha512-+WFHvdXAXwIrMH/5KcRcnixyYKYyE4ca3fhR9aljKB0N3Vgt+N5ilnZ1whPqdkmUzOs3fpW5k7nEDdLToJx2jA==
+
 ansi-regex@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-5.0.1.tgz#082cb2c89c9fe8659a311a53bd6a4dc5301db304"
