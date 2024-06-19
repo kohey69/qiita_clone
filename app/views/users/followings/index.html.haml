@@ -1,0 +1,11 @@
+%h1="#{@user.name}のフォローリスト"
+
+%nav.mb-3
+  .nav.nav-tabs{:role => "tablist"}
+    %button.nav-link{class: class_names(active: params[:followed_page].blank?), data: {"bs-target": ".nav-following-users", "bs-toggle": "tab"}, :role => "tab", :type => "button"} フォローしているユーザー
+    %button.nav-link{class: class_names(active: params[:followed_page].present?), data: {"bs-target": ".nav-followed-users", "bs-toggle": "tab"}, :role => "tab", :type => "button"} フォローされているユーザー
+.tab-content
+  .nav-following-users.tab-pane.fade{class: class_names('show active': params[:followed_page].blank?), role: "tabpanel", tabindex: "0"}
+    = render 'users/followings/following_users', following_users: @following_users
+  .nav-followed-users.tab-pane.fade{class: class_names('show active': params[:followed_page].present?), role: "tabpanel", tabindex: "0"}
+    = render 'users/followings/followed_users', followed_users: @followed_users

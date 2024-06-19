@@ -8,4 +8,7 @@
           = user.articles.size
           %span.text-muted 記事
   %hr
-  = render 'users/followings/follow_info', user: user
+  = render 'users/followings/users_follow', user: user
+  %hr
+  .d-flex.justify-content-center
+    = link_to 'フォローリスト', user_followings_path(user), class: 'text-secondary'
