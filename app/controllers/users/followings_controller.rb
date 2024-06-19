@@ -1,4 +1,6 @@
 class Users::FollowingsController < Users::ApplicationController
+  before_action :authenticate_user!
+
   def index
     @following_users = @user.following_users.with_attached_avatar.page(params[:following_page])
     @followed_users = @user.followed_users.with_attached_avatar.page(params[:followed_page])
