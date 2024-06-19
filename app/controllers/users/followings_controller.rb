@@ -1,5 +1,5 @@
 class Users::FollowingsController < Users::ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i[create destroy]
 
   def index
     @following_users = @user.following_users.with_attached_avatar.page(params[:following_page])
